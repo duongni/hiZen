@@ -2,8 +2,8 @@
 export const NAV_LINKS = [
   { href: "/", key: "home", label: "Home" },
   { href: "/", key: "how_hizen_work", label: "How HiZen Work?" },
-  { href: "/", key: "services", label: "Services" },
-  { href: "/", key: "pricing ", label: "Pricing " },
+  { href: "/", key: "camps", label: "Camps" },
+  { href: "/", key: "parks", label: "Parks" },
   { href: "/", key: "contact_us", label: "Contact Us" },
 ];
 
