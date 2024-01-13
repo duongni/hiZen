@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className=" flexBetween max-container padding-container relative z-30 py-5">
       <Link href="/">
         <Image
-          src="reshot-icon-camping-tent-LHPJ9STM27.svg"
+          src="/reshot-icon-camping-tent-LHPJ9STM27.svg"
           alt="logo"
           width={80}
           height={50}
@@ -51,7 +51,7 @@ const Navbar = () => {
       <ul
         className={`lg:hidden ${
           isMenuOpen ? "flex" : "hidden"
-        } flex-col gap-4 absolute top-20 right-0 bg-white p-4`}
+        } flex-col gap-4 absolute top-20 right-0 bg-white p-4 w-full py-20 transition-all hover:font-bold  items-center justify-center `}
       >
         {NAV_LINKS.map((link) => (
           <Link
