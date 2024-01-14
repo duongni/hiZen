@@ -21,4 +21,7 @@ const Button = ({ type, title, icon, variant }: ButtonProps) => {
   );
 };
 
+const FeatureItem = () => {
+  return <div>{title}</div>;
+};
 export default Button;
