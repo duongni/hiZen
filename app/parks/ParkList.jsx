@@ -6,6 +6,7 @@ import Image from "next/image";
 async function getParks() {
   const res = await fetch("http://localhost:3000/api/parks");
   const data = await res.json();
+
   return data.data.data;
 }
 
@@ -26,33 +27,55 @@ const ParkList = () => {
     fetchData();
   }, []); // Empty dependency array ensures this runs only once, similar to componentDidMount
 
+  // Function to filter parks based on activities
+  const filterParksByActivities = (parks, desiredActivities) => {
+    return parks.filter((park) =>
+      park.activities.some((activity) =>
+        desiredActivities.includes(activity.name)
+      )
+    );
+  };
+
   return (
-    <section className="flexCenter flex-col">
-      <div className="padding-container max-container w-full pb-24">
-        {parks.map((park) => (
-          <div
-            key={park.id}
-            className="padding-container max-container w-full pb-24"
-          >
-            <Image
-              src={park.images[0].url}
-              alt={park.fullName}
-              width={600}
-              height={400}
-            />
-            <h2 className="bold-40 lg:bold-64 xl:max-w-[390px]">
-              {park.fullName}
-            </h2>
-            <p className="uppercase regular-18 -mt-1 mb-3 text-green-50">
-              {park.states}, {park.designation}
-            </p>
-            <p className="regular-16 text-gray-30 xl:max-w-[520px]">
-              {park.description}
-            </p>
+    <div className="max-container mx-auto lg:grid xl:grid-cols-2 gap-10 flex-col">
+      {filterParksByActivities(parks, [
+        "Stargazing",
+        "Biking",
+        "Picnicking",
+        "Hiking",
+        "Paddling",
+        "Kayaking",
+        "Stand Up Paddleboarding",
+      ]).map((park) => (
+        <div
+          key={park.id}
+          className=" flex flexCenter mx-auto max-w-md overflow-hidden rounded-xl bg-gay-50 shadow-lg md:max-w-2xl mt-10"
+        >
+          <div className="md:flex flexCenter flex-col">
+            <div className="md:shrink-0">
+              <Image
+                src={park.images[0].url}
+                alt={park.fullName}
+                width={600}
+                height={500}
+                className="h-70 w-full object-cover md:h-full md:w-100"
+              />
+            </div>
+            <div className="p-8">
+              <h2 className="mt-1 block text-lg font-bold leading-light text-green-50">
+                {park.fullName}
+              </h2>
+              <p className="uppercase text-xs mt-1 mb-3 text-green-50">
+                {park.states}, {park.designation}
+              </p>
+              <p className="mt-2 text-gray-30">
+                {park.description.slice(0, 200)}...
+              </p>
+            </div>
           </div>
-        ))}
-      </div>
-    </section>
+        </div>
+      ))}
+    </div>
   );
 };
 
