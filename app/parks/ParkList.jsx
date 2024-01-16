@@ -35,9 +35,19 @@ const ParkList = () => {
       )
     );
   };
+  // Function to get filtered activities for display
+  const getFilteredActivities = (park, desiredActivities) => {
+    return park.activities
+      .filter((activity) => desiredActivities.includes(activity.name))
+      .map((activity) => activity.name)
+      .join(", ");
+  };
 
   return (
-    <div className="max-container mx-auto lg:grid xl:grid-cols-2 gap-10 flex-col">
+    <Link
+      href="/"
+      className="max-container mx-auto lg:grid xl:grid-cols-3 lg:grid-cols-2 gap-10 flex-col w-300 mb-10 object-contain"
+    >
       {filterParksByActivities(parks, [
         "Stargazing",
         "Biking",
@@ -49,16 +59,16 @@ const ParkList = () => {
       ]).map((park) => (
         <div
           key={park.id}
-          className=" flex flexCenter mx-auto max-w-md overflow-hidden rounded-xl bg-gay-50 shadow-lg md:max-w-2xl mt-10"
+          className="mx-auto max-w-md overflow-hidden rounded-xl bg-gay-50 shadow-lg  mt-10 h-[500px]"
         >
           <div className="md:flex flexCenter flex-col">
-            <div className="md:shrink-0">
+            <div className="">
               <Image
                 src={park.images[0].url}
                 alt={park.fullName}
-                width={600}
-                height={500}
-                className="h-70 w-full object-cover md:h-full md:w-100"
+                width={450}
+                height={150}
+                className="object-cover bg-centermd:w-full h-48"
               />
             </div>
             <div className="p-8">
@@ -71,11 +81,23 @@ const ParkList = () => {
               <p className="mt-2 text-gray-30">
                 {park.description.slice(0, 200)}...
               </p>
+              <p className="text-xs flex flex-col gap-4 text-gray-30 mt-5">
+                Activities:{" "}
+                {getFilteredActivities(park, [
+                  "Stargazing",
+                  "Biking",
+                  "Picnicking",
+                  "Hiking",
+                  "Paddling",
+                  "Kayaking",
+                  "Stand Up Paddleboarding",
+                ])}
+              </p>
             </div>
           </div>
         </div>
       ))}
-    </div>
+    </Link>
   );
 };
 
