@@ -27,27 +27,32 @@ const ParkList = () => {
   }, []); // Empty dependency array ensures this runs only once, similar to componentDidMount
 
   return (
-    <>
-      {parks.map((park) => (
-        <div key={park.id} className="flexCenter flex-col">
-          <Image
-            src={park.images[0].url}
-            alt={park.fullName}
-            width={100}
-            height={100}
-          />
-          <h2 className="bold-40 lg:bold-64 xl:max-w-[390px]">
-            {park.fullName}
-          </h2>
-          <p className="regular-16 text-gray-30 xl:max-w-[520px]">
-            {park.description}
-          </p>
-          <p className="uppercase regular-18 -mt-1 mb-3 text-green-50">
-            {park.state}
-          </p>
-        </div>
-      ))}
-    </>
+    <section className="flexCenter flex-col">
+      <div className="padding-container max-container w-full pb-24">
+        {parks.map((park) => (
+          <div
+            key={park.id}
+            className="padding-container max-container w-full pb-24"
+          >
+            <Image
+              src={park.images[0].url}
+              alt={park.fullName}
+              width={600}
+              height={400}
+            />
+            <h2 className="bold-40 lg:bold-64 xl:max-w-[390px]">
+              {park.fullName}
+            </h2>
+            <p className="uppercase regular-18 -mt-1 mb-3 text-green-50">
+              {park.states}, {park.designation}
+            </p>
+            <p className="regular-16 text-gray-30 xl:max-w-[520px]">
+              {park.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 
