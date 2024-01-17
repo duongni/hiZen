@@ -2,7 +2,7 @@ export async function GET() {
   try {
     const apiKey = process.env.API_KEY;
     const res = await fetch(
-      `https://developer.nps.gov/api/v1/parks?api_key=${apiKey}`
+      `https://developer.nps.gov/api/v1/parks?limit=100&api_key=${apiKey}`
     );
 
     if (!res.ok) {

@@ -34,6 +34,7 @@ module.exports = {
         "bg-img-2": "url('/oregon-coast.jpg')",
         "bg-img-3": "url('/colchuck-lake.jpg')",
         "feature-bg": "url('/feature-bg.png')",
+        "park-detail": "url('/north-cascade.jpeg')",
         pattern: "url('/pattern.png')",
         "pattern-2": "url('/pattern-bg.png')",
       },
