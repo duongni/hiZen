@@ -17,37 +17,43 @@ interface Park {
   designation: string;
 }
 
-async function getParkByCode(parkCode) {
-  const res = await fetch(`http://localhost:3000/api/parks/${parkCode}`);
+async function getParkbyParkCode(parkCode: string): Promise<Park> {
+  const apiKey = process.env.API_KEY;
+  const res = await fetch(
+    `https://developer.nps.gov/api/v1/parks?${parkCode}&limit=100&api_key=${apiKey}`
+  );
   const data = await res.json();
-  return data.data.data;
+  return data.data.data[0];
 }
 
 const ParkDetails = () => {
-  const [park, setPark] = useState(null);
+  const [park, setPark] = useState<Park | null>(null);
   const router = useRouter();
+  const { parkCode } = router.query;
+  if (!parkCode) {
+    // Handle the case when parkCode is not defined
+    return <div>Loading...</div>;
+  }
 
   useEffect(() => {
-    const { parkCode } = router.query; // Destructure within useEffect
     const fetchData = async () => {
       try {
-        const parkData = await getParkByCode(parkCode);
+        const parkData = await getParkbyParkCode(parkCode as string);
         setPark(parkData);
-      } catch (error) {
-        console.error("Error fetching park details:", error.message);
-        // Handle error or redirect to an error page
+      } catch (error: any) {
+        console.log("Error fetching park details:", error.message);
       }
     };
-
     if (parkCode) {
       fetchData();
     }
-  }, [router.query]); // Watch for changes in the entire router.query object
+  }, [parkCode]);
 
   if (!park) {
-    // Render loading state or error message
+    //render loading state or erro message
     return <div>Loading...</div>;
   }
+
   return (
     <section className=" max-container mx-auto bg-feature-bg bg-center bg-repeat">
       <div className="flex flex-col flexCenter ">
