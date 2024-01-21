@@ -38,7 +38,7 @@ const ParkInfo = ({ isOpen, closeModel, park }: ParkDetailsProps) => {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Dialog.Panel className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white text-left shadow-xsl transition-all flex flex-col">
+                <Dialog.Panel className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white p-6 text-left shadow-xsl transition-all flex flex-col">
                   <button
                     type="button"
                     onClick={closeModel}
@@ -96,20 +96,18 @@ const ParkInfo = ({ isOpen, closeModel, park }: ParkDetailsProps) => {
                     <h1 className="text-[22px] leading-[26px] font-bold capitalize">
                       {park.name}
                     </h1>
-                    <p className="mt-3 flex flex-wrap gap-4">
-                      {Object.entries(park.activities).map(([id, name]) => (
-                        <div
-                          className=" flex justify-between gap-5 w-full text-right"
-                          key={id}
-                        >
-                          <h4>{id}</h4>
-                          <p>{name}</p>
-                        </div>
-                      ))}
-                    </p>
+                    <p className="text-gray-50 my-3">{park.description}</p>
                     <div className="mt-3 flex flex-wrap gap-4">
-                      {park.activities}
+                      <h4 className=" capitalize font-semibold">Activities</h4>
+
+                      <p className=" text-[12px] text-gray-50 -mt-2">
+                        {park.activities
+                          .map((activity) => activity.name)
+                          .join(", ")}
+                      </p>
                     </div>
+
+                    <div className="mt-3 flex flex-wrap gap-4"></div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

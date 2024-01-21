@@ -17,7 +17,10 @@ export interface ParkDetails {
   designation: string;
   description: string;
   images: { url: string }[];
-  activities: { name: string }[];
+  activities: {
+    id: string;
+    name: string;
+  }[];
   entranceFees: { cost: string; title: string }[];
   directionsInfor: string;
   directionsUrl: string;
