@@ -4,18 +4,16 @@ import { Fragment } from "react";
 import { Disclosure } from "@headlessui/react";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
-import { ParkDetails } from "@/types";
+import { CampDetails } from "@/types";
 import CustomButton from "./CustomButton";
 import Link from "next/link";
 
-interface ParkDetailsProps {
+interface CampDetailsProps {
   isOpen: boolean;
   closeModel: () => void;
-  park: ParkDetails;
+  camp: CampDetails;
 }
-
-const ParkInfo = ({ isOpen, closeModel, park }: ParkDetailsProps) => {
-  console.log(park.url);
+const CampInfo = ({ isOpen, closeModel, camp }: CampDetailsProps) => {
   return (
     <div className="max-container mx-auto bg-center bg-repeat overflow-hidden">
       <Transition appear show={isOpen} as={Fragment}>
@@ -58,66 +56,62 @@ const ParkInfo = ({ isOpen, closeModel, park }: ParkDetailsProps) => {
                   </button>
                   <div className="flex-1 flex flex-col justify-between">
                     <h1 className="text-[22px] leading-[26px] font-bold capitalize">
-                      {park.name}
+                      {camp.name}
                     </h1>
-                    <p className="text-gray-50 text-[14px] my-3 tracking-wide">
-                      {park.states}
-                    </p>
 
                     <div className="-z-10 overflow-hidden  bg-cover bg-center bg-repeat rounded-lg mb-2 opacity-50">
-                      <Image
-                        src={park.images[1].url}
-                        alt={park.fullName}
-                        fill
-                        priority
-                        className="bg-blend-multiply"
-                      />
+                      {camp.images && camp.images.length > 0 && (
+                        <Image
+                          src={camp.images[0].url}
+                          alt={camp.name}
+                          fill
+                          priority //className="object-contain"
+                        />
+                      )}
                     </div>
                   </div>
 
                   <Disclosure as="div" className="relative mt-3 ">
-                    <Disclosure.Button className="grid grid-cols-2 w-[150px] bg-white  text-wrap z-10 opacity-60 rounded-xl px-4 py-2 text-left text-sm font-medium  hover:black focus:outline-none focus-visible:ring">
+                    <Disclosure.Button className="grid grid-cols-2 w-[150px] bg-white  text-wrap z-10 opacity-75 rounded-xl px-4 py-2 text-left text-sm font-medium  hover:black focus:outline-none focus-visible:ring">
                       Description
                     </Disclosure.Button>
                     <Disclosure.Panel className="grid grid-cols-1 bg-white opacity-75 rounded-xl px-4 py-2 text-left text-sm gap-4 mt-2">
-                      <p className=" text-[12px]  text-gray-90 mt-2 font-medium">
+                      <p className=" text-[12px] text-gray-90 mt-2 font-medium">
                         {" "}
-                        {park.description}
+                        {camp.description}
                       </p>
                     </Disclosure.Panel>
                     <Disclosure as="div" className="my-3">
-                      <Disclosure.Button className="grid grid-cols-2 w-[150px] text-wrap  bg-white z-10 opacity-60 rounded-xl px-4 py-2 text-left text-sm font-medium hover:black focus:outline-none focus-visible:ring">
-                        Activities
+                      <Disclosure.Button className="grid grid-cols-2 w-[150px] text-wrap  bg-white z-10 opacity-75 rounded-xl px-4 py-2 text-left text-sm font-medium hover:black focus:outline-none focus-visible:ring">
+                        Reservation Info
                       </Disclosure.Button>
                       <Disclosure.Panel className="grid grid-cols-1 bg-white opacity-75 rounded-xl px-4 py-2 text-left text-sm gap-4 mt-2">
-                        <p className=" text-[12px]  text-gray-90 mt-2 font-medium">
-                          {park.activities
-                            .map((activity) => activity.name)
-                            .join(", ")}
+                        <p className=" text-[12px] text-gray-90 mt-2 font-medium">
+                          {camp.reservationInfo}
                         </p>
                       </Disclosure.Panel>
                     </Disclosure>
                   </Disclosure>
                   <Disclosure as="div" className="my-2">
-                    <Disclosure.Button className="grid grid-cols-2 w-[150px] text-wrap  bg-white z-10 opacity-60 rounded-xl px-4 py-2 text-left text-sm font-medium hover:black focus:outline-none focus-visible:ring">
+                    <Disclosure.Button className="grid grid-cols-2 w-[150px] text-wrap  bg-white z-10 opacity-75 rounded-xl px-4 py-2 text-left text-sm font-medium hover:black focus:outline-none focus-visible:ring">
                       Direction Info
                     </Disclosure.Button>
                     <Disclosure.Panel className="grid grid-cols-1 bg-white opacity-75 rounded-xl px-4 py-2 text-left text-sm gap-4 mt-2">
-                      <p className=" text-[12px]  text-gray-90 mt-2 font-medium">
-                        {park.directionsInfo}
+                      <p className=" text-[12px] text-gray-90 mt-2 font-medium">
+                        {camp.directionsOverview}
                       </p>
                     </Disclosure.Panel>
                   </Disclosure>
 
                   <div className="grid grid-cols-1 overflow-x-auto hide-scrollbar mt-4  ">
-                    {park.images.map((image, index) => (
+                    {camp.images.map((image, index) => (
                       <div
                         key={index}
                         className="h-[450px] relative shadow-md rounded-xl gap-8 overflow-x-auto mt-8"
                       >
                         <Image
                           src={image.url}
-                          alt={park.fullName}
+                          alt={camp.name}
                           fill
                           objectFit="cover"
                         />
@@ -125,9 +119,9 @@ const ParkInfo = ({ isOpen, closeModel, park }: ParkDetailsProps) => {
                     ))}
                   </div>
                   <div className="my-2">
-                    <Link href={park.url} target="_blank">
+                    <Link href={camp.reservationUrl} target="_blank">
                       <CustomButton
-                        title="Explore"
+                        title="Make Reservation"
                         containerStyles="w-full py-[10px] rounded-full bg-green-50"
                         textStyles="text-white text-[14px] leading-[17px] font-bold"
                       />
@@ -143,4 +137,4 @@ const ParkInfo = ({ isOpen, closeModel, park }: ParkDetailsProps) => {
   );
 };
 
-export default ParkInfo;
+export default CampInfo;

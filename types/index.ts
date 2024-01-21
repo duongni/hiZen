@@ -28,3 +28,22 @@ export interface ParkDetails {
   directionsUrl: string;
   name: string;
 }
+export interface CampDetails {
+  parkCode: string;
+  name: string;
+  numberOfSitesReservable: number;
+  numberOfSitesFirstComeFirstServe: number;
+  campsites: { totalSites: string }[];
+  reservationInfo: string;
+  reservationUrl: string;
+  fee: { cost: string; title: string }[];
+  designation: string;
+  directionsOverview: string;
+  description: string;
+  images: { url: string; altText: string }[];
+  activities: {
+    id: string;
+    name: string;
+  }[];
+  operatingHours: { description: string }[];
+}
