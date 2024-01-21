@@ -21,4 +21,5 @@ export interface ParkDetails {
   entranceFees: { cost: string; title: string }[];
   directionsInfor: string;
   directionsUrl: string;
+  name: string;
 }

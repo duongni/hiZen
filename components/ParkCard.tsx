@@ -1,6 +1,10 @@
+"use client";
+
 import { ParkDetails } from "@/types";
 import Image from "next/image";
+import { useState } from "react";
 import CustomButton from "./CustomButton";
+import ParkInfo from "./ParkInfo";
 
 interface ParkDetailsProps {
   park: ParkDetails;
@@ -15,9 +19,10 @@ const ParkCard = ({ park }: ParkDetailsProps) => {
     images,
     designation,
   } = park;
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl;">
+    <div className="flex flex-col p-6 justify-center items-start text-black-100 bg-slate-50 hover:bg-white hover:shadow-md rounded-3xl">
       <div className="w-full flex justify-between items-start gap-2">
         <h2 className="text-[22px] leading-[26px] font-bold capitalize">
           {park.fullName}
@@ -31,8 +36,19 @@ const ParkCard = ({ park }: ParkDetailsProps) => {
           priority //className="object-contain"
         />
       </div>
-      <p>{park.description.slice(0, 200)}... </p>
-      <CustomButton />
+      <p className="text-gray-30 mb-3">{park.description.slice(0, 200)}... </p>
+      <div className="hidden group-hover:flex absolute bottom-0 w-full z-10"></div>
+      <CustomButton
+        title="View More"
+        containerStyles="w-full py-[10px] rounded-full bg-green-50"
+        textStyles="text-white text-[14px] leading-[17px] font-bold"
+        handleClick={() => setIsOpen(true)}
+      />
+      <ParkInfo
+        isOpen={isOpen}
+        closeModel={() => setIsOpen(false)}
+        park={park}
+      />
     </div>
   );
 };

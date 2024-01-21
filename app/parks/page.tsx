@@ -10,7 +10,7 @@ export default async function Parks() {
     !Array.isArray(allParks) || allParks.length < 1 || !allParks;
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden max-container mx-auto object-contain">
       {!isDataEmpty ? (
         <section>
           <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14;">
