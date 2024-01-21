@@ -11,7 +11,7 @@ export async function GET() {
     }
 
     const data = await res.json();
-    console.log(data);
+
     return Response.json({ data });
   } catch (error) {
     // Handle the error, log it, or return a default value
