@@ -21,8 +21,8 @@ export interface ParkDetails {
     id: string;
     name: string;
   }[];
-  entranceFees: { cost: string; title: string }[];
-  directionsInfor: string;
+  operatingHours: { description: string }[];
+  directionsInfo: string;
   directionsUrl: string;
   name: string;
 }

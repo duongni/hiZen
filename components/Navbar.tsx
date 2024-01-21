@@ -17,7 +17,7 @@ const Navbar = () => {
         <Image
           src="/reshot-icon-camping-tent-LHPJ9STM27.svg"
           alt="logo"
-          width={80}
+          width={50}
           height={50}
         />
       </Link>

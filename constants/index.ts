@@ -1,10 +1,9 @@
 // NAVIGATION
 export const NAV_LINKS = [
   { href: "/", key: "home", label: "Home" },
-  { href: "/", key: "how_hizen_work", label: "How HiZen Work?" },
+
   { href: "/camps", key: "camps", label: "Camps" },
   { href: "/parks", key: "parks", label: "Parks" },
-  { href: "/", key: "contact_us", label: "Contact Us" },
 ];
 
 // CAMP SECTION
