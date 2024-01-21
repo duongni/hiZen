@@ -19,6 +19,7 @@ const ParkCard = ({ park }: ParkDetailsProps) => {
     images,
     designation,
     operatingHours,
+    url,
   } = park;
   const [isOpen, setIsOpen] = useState(false);
 

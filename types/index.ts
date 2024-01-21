@@ -8,12 +8,14 @@ export interface CustomButtonProps {
   textStyles?: string;
   rightIcon?: string;
   isDisabled?: boolean;
+  onClick?: string;
 }
 export interface ParkDetails {
   id: string;
   parkCode: string;
   fullName: string;
   states: string;
+  url: string;
   designation: string;
   description: string;
   images: { url: string }[];
