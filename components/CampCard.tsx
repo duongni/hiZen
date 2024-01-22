@@ -29,7 +29,7 @@ const CampCard = ({ camp }: CampDetailsProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-col p-6 justify-center items-start text-black-100 bg-slate-50 hover:bg-white hover:shadow-md rounded-3xl">
+    <div className="flex flex-col p-6 justify-center items-start text-black-100 bg-slate-50 shadow-md hover:bg-white hover:shadow-md rounded-3xl">
       <div className="w-full flex justify-between items-start gap-2">
         <h2 className="text-[22px] leading-[26px] font-bold capitalize">
           {camp.name}
@@ -41,11 +41,14 @@ const CampCard = ({ camp }: CampDetailsProps) => {
             src={camp.images[0].url}
             alt={camp.name}
             fill
+            style={{ objectFit: "cover" }}
             priority //className="object-contain"
           />
         )}
       </div>
-      <p className="text-gray-30 mb-3">{camp.description.slice(0, 200)}... </p>
+      <p className="text-gray-30 text-[14px] mb-3">
+        {camp.description.slice(0, 200)}...{" "}
+      </p>
       <div className="hidden group-hover:flex absolute bottom-0 w-full z-10"></div>
       <CustomButton
         title="View More"

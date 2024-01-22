@@ -46,9 +46,20 @@ export interface CampDetails {
     name: string;
   }[];
   operatingHours: { description: string }[];
+  addresses: {
+    postalCode: number;
+    city: string;
+    stateCode: string;
+    line1: string;
+    type: string;
+  };
 }
 
 export interface SearchStateProps {
   state: string;
   setState: (manufacturer: string) => void;
+}
+
+export interface FilterProps {
+  state: string;
 }

@@ -24,7 +24,7 @@ const ParkCard = ({ park }: ParkDetailsProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex flex-col p-6 justify-center items-start text-black-100 bg-slate-50 hover:bg-white hover:shadow-md rounded-3xl">
+    <div className="flex flex-col p-6 justify-center items-start text-black-100 bg-slate-50 shadow-md hover:bg-white hover:shadow-md rounded-3xl">
       <div className="w-full flex justify-between items-start gap-2">
         <h2 className="text-[22px] leading-[26px] font-bold capitalize">
           {park.fullName}
@@ -38,7 +38,9 @@ const ParkCard = ({ park }: ParkDetailsProps) => {
           priority //className="object-contain"
         />
       </div>
-      <p className="text-gray-30 mb-3">{park.description.slice(0, 200)}... </p>
+      <p className="text-gray-30 text-[14px] mb-3">
+        {park.description.slice(0, 200)}...{" "}
+      </p>
       <div className="hidden group-hover:flex absolute bottom-0 w-full z-10"></div>
       <CustomButton
         title="View More"
