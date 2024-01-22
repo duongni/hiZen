@@ -15,7 +15,6 @@ interface ParkDetailsProps {
 }
 
 const ParkInfo = ({ isOpen, closeModel, park }: ParkDetailsProps) => {
-  console.log(park.url);
   return (
     <div className="max-container mx-auto bg-center bg-repeat overflow-hidden">
       <Transition appear show={isOpen} as={Fragment}>
@@ -66,7 +65,7 @@ const ParkInfo = ({ isOpen, closeModel, park }: ParkDetailsProps) => {
 
                     <div className="-z-10 overflow-hidden  bg-cover bg-center bg-repeat rounded-lg mb-2 opacity-50">
                       <Image
-                        src={park.images[1].url}
+                        src={park.images[0].url}
                         alt={park.fullName}
                         fill
                         priority

@@ -5,7 +5,7 @@ import SearchBar from "@/components/SearchBar";
 import CustomFilter from "@/components/CustomFilter";
 import { fetchCamps } from "@/utils";
 
-export default async function Parks({ searchParams }: { searchParams: any }) {
+export default async function Camps({ searchParams }: { searchParams: any }) {
   const allCamps = await fetchCamps({
     state: searchParams.state || "",
   });

@@ -3,8 +3,10 @@ import React from "react";
 import ParkCard from "@/components/ParkCard";
 import { fetchParks } from "@/utils";
 
-export default async function Parks() {
-  const allParks = await fetchParks();
+export default async function Parks({ searchParams }: { searchParams: any }) {
+  const allParks = await fetchParks({
+    state: searchParams.state || "",
+  });
   //checking there is any data in allParks
   const isDataEmpty =
     !Array.isArray(allParks) || allParks.length < 1 || !allParks;
