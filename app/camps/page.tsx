@@ -1,6 +1,8 @@
 import React from "react";
 
 import CampCard from "@/components/CampCard";
+import SearchBar from "@/components/SearchBar";
+import CustomFilter from "@/components/CustomFilter";
 import { fetchCamps } from "@/utils";
 
 export default async function Parks() {
@@ -11,6 +13,12 @@ export default async function Parks() {
 
   return (
     <div className="overflow-hidden max-container mx-auto object-contain mb-20">
+      <div className="mt-12 w-full flex-between items-center flex-wrap gap-5 sm:px-16 px-6 py-4">
+        <SearchBar />
+        <div className="flex justify-start flex-wrap items-center gap-2">
+          <CustomFilter title="activity" />
+        </div>
+      </div>
       <div>
         {!isDataEmpty ? (
           <section>

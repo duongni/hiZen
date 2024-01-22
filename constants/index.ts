@@ -83,3 +83,19 @@ export const SOCIALS = {
     "/wordpress.svg",
   ],
 };
+
+export const states = [
+  "AL",
+  "AK",
+  "AZ",
+  "AR",
+  "AS",
+  "CA",
+  "CO",
+  "CO",
+  "CT",
+  "DE",
+  "DC",
+  "FL",
+  "GA",
+];

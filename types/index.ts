@@ -47,3 +47,8 @@ export interface CampDetails {
   }[];
   operatingHours: { description: string }[];
 }
+
+export interface SearchStateProps {
+  state: string;
+  setState: (manufacturer: string) => void;
+}
